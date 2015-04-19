@@ -1,0 +1,52 @@
+﻿/*
+ * Classic example grammar, which recognizes simple arithmetic expressions like
+ * "2*(3+4)". The parser generated from this grammar then computes their value.
+ */
+
+{
+
+var And = (function () {
+  function And(left, right) { this._ = "And"; this.left = left; this.right = right; }
+  return And;
+})();
+
+
+var Or = (function () {
+  function Or(left, right) { this._ = "Or"; this.left = left; this.right = right; }
+  return Or;
+})();
+
+var Not = (function () {
+  function Not(child) { this._ = "Not"; this.child = child; }
+  return Not;
+})();
+
+var Expression = (function () {
+  function Expression(child) { this._ = "Expression"; this.child = child; }
+  return Expression;
+})();
+
+}
+
+
+start
+  = expression:additive { return new Expression(expression) }
+
+additive
+  = left:multiplicative "|" right:additive { return new Or(left, right); }
+  / multiplicative
+
+multiplicative
+  = left:not "&" right:multiplicative { return new And(left, right); }
+  / not
+
+not
+  = "!" child:primary { return new Not(child); }
+  / primary
+primary
+  = integer
+  / "(" additive:additive ")" { return additive; }
+
+integer "integer"
+  = val:[01] { return val == "1"; }
+  / letters:[a-zA-Z_]+ { return letters.join(''); }
