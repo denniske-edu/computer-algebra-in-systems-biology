@@ -30,6 +30,8 @@ var Test;
             matchDivision('x^2+2*x+1', ['x+1']);
             matchDivision('x*y^2-x', ['y^2-1', 'x*y+1']);
             matchDivision('x*y^2-x', ['x*y+1', 'y^2-1'], '-x-y');
+            matchDivision('x^2*y-x*z', ['x*y-z', 'x+1']);
+            matchDivision('x^2*y-x*z', ['x+1', 'x*y-z'], 'y+z');
             matchDivision('x^2*z^2-y^2*z', ['y^2+z^2', 'x^2*y+y*z'], 'x^2*z^2+z^3');
             var f = PParser.parse('x^2+2*x+1', field);
             var fs = [PParser.parse('x+1', field)];
