@@ -14,13 +14,6 @@ var Maths;
         function Decomposer() {
         }
         Decomposer.run = function (block) {
-            if (block instanceof Maths.Expression) {
-                var expression = block;
-                if (expression.child instanceof Maths.Block) {
-                    expression.child = Decomposer.run(expression.child);
-                }
-                return expression;
-            }
             if (block instanceof Maths.Add) {
                 var add = block;
                 if (add.left instanceof Maths.Block) {

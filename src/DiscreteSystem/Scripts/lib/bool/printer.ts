@@ -13,13 +13,6 @@ module Bool {
 
 		static run(block: any, parent: Block = null): string {
 			
-			if (block instanceof Expression) {
-				
-				var expression = <Expression>block;
-
-				return Printer.run(expression.child, block);
-			}
-
 			if (block instanceof And) {
 
 				var add = <And>block;

@@ -17,13 +17,6 @@ var Maths;
         function Simplifier() {
         }
         Simplifier.run = function (block) {
-            if (block instanceof Maths.Expression) {
-                var expression = block;
-                if (expression.child instanceof Maths.Block) {
-                    expression.child = Simplifier.run(expression.child);
-                }
-                return expression;
-            }
             if (block instanceof Maths.Add) {
                 var add = block;
                 if (add.left instanceof Maths.Block) {

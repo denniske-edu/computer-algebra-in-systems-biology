@@ -1,18 +1,14 @@
-﻿/*
- * Classic example grammar, which recognizes simple arithmetic expressions like
- * "2*(3+4)". The parser generated from this grammar then computes their value.
- */
+﻿// Recognizes boolean expressions like "a&b|!c".
 
 {
 
 var And = (function () {
-  function And(left, right) { this._ = "And"; this.left = left; this.right = right; }
+  function And(l, r) { this._ = "And"; this.l = l; this.r = r; }
   return And;
 })();
 
-
 var Or = (function () {
-  function Or(left, right) { this._ = "Or"; this.left = left; this.right = right; }
+  function Or(l, r) { this._ = "Or"; this.l = l; this.r = r; }
   return Or;
 })();
 
@@ -21,32 +17,28 @@ var Not = (function () {
   return Not;
 })();
 
-var Expression = (function () {
-  function Expression(child) { this._ = "Expression"; this.child = child; }
-  return Expression;
-})();
-
 }
 
 
 start
-  = expression:additive { return new Expression(expression) }
+  = and
 
-additive
-  = left:multiplicative "|" right:additive { return new Or(left, right); }
-  / multiplicative
+and
+  = left:or "|" right:and { return new Or(left, right); }
+  / or
 
-multiplicative
-  = left:not "&" right:multiplicative { return new And(left, right); }
+or
+  = left:not "&" right:or { return new And(left, right); }
   / not
 
 not
   = "!" child:primary { return new Not(child); }
   / primary
-primary
-  = integer
-  / "(" additive:additive ")" { return additive; }
 
-integer "integer"
+primary
+  = val
+  / "(" some:and ")" { return some; }
+
+val
   = val:[01] { return val == "1"; }
   / letters:[a-zA-Z_]+ { return letters.join(''); }

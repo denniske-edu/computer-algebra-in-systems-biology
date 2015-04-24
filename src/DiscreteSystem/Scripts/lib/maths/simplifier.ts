@@ -19,17 +19,6 @@ module Maths {
 
 		static run(block: any): any {
 			
-			if (block instanceof Expression) {
-				
-				var expression = <Expression>block;
-
-				if (expression.child instanceof Block) {
-					expression.child = Simplifier.run(expression.child);
-				}
-				
-				return expression;
-			}
-
 			if (block instanceof Add) {
 
 				var add = <Add>block;

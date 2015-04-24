@@ -2,7 +2,6 @@
 module App {
 
 	import Add = Maths.Add;
-	import Expression = Bool.Expression;
 	import And = Bool.And;
 	import Or = Bool.Or;
 	import Not = Bool.Not;
@@ -30,13 +29,6 @@ module App {
 
 		static run(block: any): any {
 			
-			if (block instanceof Expression) {
-				
-				var expression = <Expression>block;
-
-				return Converter.run(expression.child);
-			}
-
 			if (block instanceof And) {
 
 				var and = <And>block;

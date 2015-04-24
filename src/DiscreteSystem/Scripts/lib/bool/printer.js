@@ -13,10 +13,6 @@ var Bool;
         }
         Printer.run = function (block, parent) {
             if (parent === void 0) { parent = null; }
-            if (block instanceof Bool.Expression) {
-                var expression = block;
-                return Printer.run(expression.child, block);
-            }
             if (block instanceof Bool.And) {
                 var add = block;
                 if (parent instanceof Bool.And) {

@@ -17,11 +17,6 @@ var Maths;
         }
         Replacer.run = function (block, replacements) {
             if (replacements === void 0) { replacements = []; }
-            if (block instanceof Maths.Expression) {
-                var expression = block;
-                expression.child = Replacer.run(expression.child, replacements);
-                return expression;
-            }
             if (block instanceof Maths.Add) {
                 var add = block;
                 add.left = Replacer.run(add.left, replacements);

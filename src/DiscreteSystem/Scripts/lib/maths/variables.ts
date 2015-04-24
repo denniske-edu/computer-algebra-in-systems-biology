@@ -16,15 +16,6 @@ module Maths {
 
 		static run(block: any, vars: string[] = []): string[] {
 			
-			if (block instanceof Expression) {
-				
-				var expression = <Expression>block;
-
-				Variables.run(expression.child, vars);
-				
-				return vars;
-			}
-
 			if (block instanceof Add) {
 
 				var add = <Add>block;

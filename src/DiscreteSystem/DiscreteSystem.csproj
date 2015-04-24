@@ -48,7 +48,6 @@
     <TypeScriptCompile Include="Scripts\lib\bool\printer.ts" />
     <TypeScriptCompile Include="Scripts\lib\bool\structure\and.ts" />
     <TypeScriptCompile Include="Scripts\lib\bool\structure\block.ts" />
-    <TypeScriptCompile Include="Scripts\lib\bool\structure\expression.ts" />
     <TypeScriptCompile Include="Scripts\lib\bool\structure\not.ts" />
     <TypeScriptCompile Include="Scripts\lib\bool\structure\or.ts" />
     <TypeScriptCompile Include="Scripts\lib\maths\flatter.ts" />
@@ -60,7 +59,6 @@
     <TypeScriptCompile Include="Scripts\lib\algorithm\groebner.ts" />
     <TypeScriptCompile Include="Scripts\lib\algorithm\division.ts" />
     <TypeScriptCompile Include="Scripts\lib\maths\structure\block.ts" />
-    <TypeScriptCompile Include="Scripts\lib\maths\structure\expression.ts" />
     <TypeScriptCompile Include="Scripts\lib\maths\structure\mult.ts" />
     <TypeScriptCompile Include="Scripts\lib\maths\structure\add.ts" />
     <TypeScriptCompile Include="Scripts\lib\helper\system.ts" />
