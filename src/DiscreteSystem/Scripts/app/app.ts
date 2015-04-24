@@ -336,6 +336,20 @@ module App {
 		sampleI() {
 
 			this.inputs.removeAll();
+			this.inputs.push(new InputItem(this, 'A', '0'));
+			this.inputs.push(new InputItem(this, 'B', '0'));
+		}
+
+		sampleII() {
+
+			this.inputs.removeAll();
+			this.inputs.push(new InputItem(this, 'A', '0'));
+			this.inputs.push(new InputItem(this, 'B', '0'));
+		}
+
+		sampleIII() {
+
+			this.inputs.removeAll();
 			this.inputs.push(new InputItem(this, 'M', '!R & C'));
 			this.inputs.push(new InputItem(this, 'P', 'M'));
 			this.inputs.push(new InputItem(this, 'B', 'M'));
@@ -345,13 +359,6 @@ module App {
 			this.inputs.push(new InputItem(this, 'A_l', 'A | L | L_l'));
 			this.inputs.push(new InputItem(this, 'L', '!g & P & a'));
 			this.inputs.push(new InputItem(this, 'L_l', '!g & (L | a)'));
-		}
-
-		sampleII() {
-
-			this.inputs.removeAll();
-			this.inputs.push(new InputItem(this, 'A', '0'));
-			this.inputs.push(new InputItem(this, 'B', '0'));
 		}
 
 		ringExpressionsLatex;
