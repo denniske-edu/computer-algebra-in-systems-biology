@@ -38,6 +38,8 @@ module DiscreteSystem {
 
 		static run(F: Polynomial[], order: TermOrder): Polynomial[] {
 
+			F = _.filter(F, a => a.terms.length > 0);
+
 			F = GroebnerAlgorithm.groebner(F, order);
 			F = GroebnerAlgorithm.minimalize(F, order);
 			F = GroebnerAlgorithm.reduce(F, order);
@@ -48,7 +50,7 @@ module DiscreteSystem {
 		}
 
 		static groebner(F: Polynomial[], order: TermOrder): Polynomial[] {
-
+			
 			var added: boolean;
 
 			do {
