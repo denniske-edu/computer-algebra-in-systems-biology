@@ -12,6 +12,8 @@ var Polynomials;
         function PolynomialPrinter() {
         }
         PolynomialPrinter.run = function (polynomial, field) {
+            if (polynomial.terms.length === 0)
+                return '0';
             var str = '';
             for (var i = 0; i < polynomial.terms.length; i++) {
                 var term = polynomial.terms[i];

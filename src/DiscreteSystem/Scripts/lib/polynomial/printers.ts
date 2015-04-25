@@ -13,6 +13,9 @@ module Polynomials {
 
 		static run(polynomial: Polynomial, field: string[]): string {
 
+			if (polynomial.terms.length === 0)
+				return '0';
+
 			var str = '';
 
 			for (var i = 0; i < polynomial.terms.length; i++) {
