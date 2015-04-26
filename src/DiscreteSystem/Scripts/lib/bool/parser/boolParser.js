@@ -34,7 +34,7 @@ var Bool;
                 return some;
             }, peg$c15 = /^[01]/, peg$c16 = { type: "class", value: "[01]", description: "[01]" }, peg$c17 = function (val) {
                 return val == "1";
-            }, peg$c18 = [], peg$c19 = /^[a-zA-Z_]/, peg$c20 = { type: "class", value: "[a-zA-Z_]", description: "[a-zA-Z_]" }, peg$c21 = function (letters) {
+            }, peg$c18 = [], peg$c19 = /^[a-zA-Z_0-9]/, peg$c20 = { type: "class", value: "[a-zA-Z_]", description: "[a-zA-Z_0-9]" }, peg$c21 = function (letters) {
                 return letters.join('');
             }, peg$currPos = 0, peg$reportedPos = 0, peg$cachedPos = 0, peg$cachedPosDetails = { line: 1, column: 1, seenCR: false }, peg$maxFailPos = 0, peg$maxFailExpected = [], peg$silentFails = 0, peg$result;
             if ("startRule" in options) {

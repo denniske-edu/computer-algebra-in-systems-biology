@@ -41,4 +41,4 @@ primary
 
 val
   = val:[01] { return val == "1"; }
-  / letters:[a-zA-Z_]+ { return letters.join(''); }
+  / letters:[a-zA-Z_0-9]+ { return letters.join(''); }

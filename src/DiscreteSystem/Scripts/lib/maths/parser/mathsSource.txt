@@ -33,4 +33,4 @@ primary
 
 val
   = digits:[0-9]+ { return parseInt(digits.join(""), 10); }
-  / letters:[a-zA-Z_]+ { return letters.join(''); }
+  / letters:[a-zA-Z_0-9]+ { return letters.join(''); }

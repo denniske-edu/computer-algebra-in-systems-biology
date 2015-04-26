@@ -51,8 +51,8 @@ module Maths {
 				peg$c13 = /^[0-9]/,
 				peg$c14 = { type: "class", value: "[0-9]", description: "[0-9]" },
 				peg$c15 = function (digits) { return parseInt(digits.join(""), 10); },
-				peg$c16 = /^[a-zA-Z_]/,
-				peg$c17 = { type: "class", value: "[a-zA-Z_]", description: "[a-zA-Z_]" },
+				peg$c16 = /^[a-zA-Z_0-9]/,
+				peg$c17 = { type: "class", value: "[a-zA-Z_]", description: "[a-zA-Z_0-9]" },
 				peg$c18 = function (letters) { return letters.join(''); },
 
 				peg$currPos = 0,

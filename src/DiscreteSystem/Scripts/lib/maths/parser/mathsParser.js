@@ -32,7 +32,7 @@ var Maths;
                 return some;
             }, peg$c12 = [], peg$c13 = /^[0-9]/, peg$c14 = { type: "class", value: "[0-9]", description: "[0-9]" }, peg$c15 = function (digits) {
                 return parseInt(digits.join(""), 10);
-            }, peg$c16 = /^[a-zA-Z_]/, peg$c17 = { type: "class", value: "[a-zA-Z_]", description: "[a-zA-Z_]" }, peg$c18 = function (letters) {
+            }, peg$c16 = /^[a-zA-Z_0-9]/, peg$c17 = { type: "class", value: "[a-zA-Z_]", description: "[a-zA-Z_0-9]" }, peg$c18 = function (letters) {
                 return letters.join('');
             }, peg$currPos = 0, peg$reportedPos = 0, peg$cachedPos = 0, peg$cachedPosDetails = { line: 1, column: 1, seenCR: false }, peg$maxFailPos = 0, peg$maxFailExpected = [], peg$silentFails = 0, peg$result;
             if ("startRule" in options) {

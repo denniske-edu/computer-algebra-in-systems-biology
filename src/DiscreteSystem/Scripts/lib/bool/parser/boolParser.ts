@@ -54,8 +54,8 @@ module Bool {
 				peg$c16 = { type: "class", value: "[01]", description: "[01]" },
 				peg$c17 = function (val) { return val == "1"; },
 				peg$c18 = [],
-				peg$c19 = /^[a-zA-Z_]/,
-				peg$c20 = { type: "class", value: "[a-zA-Z_]", description: "[a-zA-Z_]" },
+				peg$c19 = /^[a-zA-Z_0-9]/,
+				peg$c20 = { type: "class", value: "[a-zA-Z_]", description: "[a-zA-Z_0-9]" },
 				peg$c21 = function (letters) { return letters.join(''); },
 
 				peg$currPos = 0,
