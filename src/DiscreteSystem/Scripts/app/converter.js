@@ -6,7 +6,7 @@ var App;
     var Not = Bool.Not;
     var Mult = Maths.Mult;
     /**
-     * NOTE: Works only in the ring IntegerModRing(2).
+     * NOTE: Works only in the ring IntegerRingModulo2.
      *
      * Converts a bool expression into a math expression by using the
      * following conversion rules:

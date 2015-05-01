@@ -4,7 +4,7 @@ var Test;
     var GroebnerAlgorithm = DiscreteSystem.GroebnerAlgorithm;
     var System = DiscreteSystem.System;
     var IntegerRing = Polynomials.IntegerRing;
-    var IntegerModRing = Polynomials.IntegerModRing;
+    var IntegerRingModulo2 = Polynomials.IntegerRingModulo2;
     var PParser = Polynomials.PolynomialParser;
     var TParser = Polynomials.TermParser;
     var PPrinter = Polynomials.PolynomialPrinter;
@@ -57,7 +57,7 @@ var Test;
             matchGroebner(['y^2+z^2', 'x^2*y+y*z'], ['x^2*y+y*z', 'x^2*z^2+z^3', 'y^2+z^2']);
         });
         // Z2-Ring
-        System.ring = new IntegerModRing(2);
+        System.ring = new IntegerRingModulo2();
         Test.test('groebner in Z2', function () {
             var matchGroebner = function (FStr, reducedGroebnerStr) {
                 var F = _.map(FStr, function (e) { return PParser.parse(e, field); });

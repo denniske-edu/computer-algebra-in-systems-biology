@@ -11,7 +11,7 @@ module App {
 	import PolynomialParser = Polynomials.PolynomialParser;
 	import Variables = Maths.Variables;
 	import Replacer = Maths.Replacer;
-	import IntegerModRing = Polynomials.IntegerModRing;
+	import IntegerRingModulo2 = Polynomials.IntegerRingModulo2;
 	import System = DiscreteSystem.System;
 	import GroebnerAlgorithm = DiscreteSystem.GroebnerAlgorithm;
 	import Plex = Polynomials.Plex;
@@ -91,7 +91,7 @@ module App {
 		constructor() {
 
 			// Z2-Ring
-			System.ring = new IntegerModRing(2);
+			System.ring = new IntegerRingModulo2();
 
 			this.computed = ko.observable(false);
 

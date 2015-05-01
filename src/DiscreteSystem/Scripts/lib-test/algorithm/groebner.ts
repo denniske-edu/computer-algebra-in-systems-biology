@@ -7,7 +7,7 @@ module Test {
 	import GroebnerAlgorithm = DiscreteSystem.GroebnerAlgorithm;
 	import System = DiscreteSystem.System;
 	import IntegerRing = Polynomials.IntegerRing;
-	import IntegerModRing = Polynomials.IntegerModRing;
+	import IntegerRingModulo2 = Polynomials.IntegerRingModulo2;
 	import PParser = Polynomials.PolynomialParser;
 	import TParser = Polynomials.TermParser;
 	import TPrinter = Polynomials.TermPrinter;
@@ -87,7 +87,7 @@ module Test {
 		});
 
 		// Z2-Ring
-		System.ring = new IntegerModRing(2);
+		System.ring = new IntegerRingModulo2();
 		
 		test('groebner in Z2', () => {
 

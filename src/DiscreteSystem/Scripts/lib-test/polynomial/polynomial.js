@@ -9,7 +9,7 @@ var Test;
     var TParser = Polynomials.TermParser;
     var TPrinter = Polynomials.TermPrinter;
     var PPrinter = Polynomials.PolynomialPrinter;
-    var IntegerModRing = Polynomials.IntegerModRing;
+    var IntegerRingModulo2 = Polynomials.IntegerRingModulo2;
     Test.group('parser', function () {
         // Integer-Ring
         System.ring = new IntegerRing();
@@ -135,7 +135,7 @@ var Test;
             matchMakeMonic('-x^2*z+y', 'x^2*z-y');
         });
         // Z2-Ring
-        System.ring = new IntegerModRing(2);
+        System.ring = new IntegerRingModulo2();
         Test.test('term toStr in Z2', function () {
             var matchToStr = function (a, b) { return Test.match(TPrinter.run(TParser.parse(a, field), field), b); };
             matchToStr('1', '1');

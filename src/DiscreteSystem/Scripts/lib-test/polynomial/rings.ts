@@ -1,17 +1,13 @@
 
 module Test {
 
-	import IntegerModRing = Polynomials.IntegerModRing;
+	import IntegerRingModulo2 = Polynomials.IntegerRingModulo2;
 
 	group('rings', () => {
 
-		test('IntegerModRing', () => {
+		test('IntegerRingModulo2', () => {
 
-			var ring = new IntegerModRing(24);
-
-			match(ring.add(12, 21), 9);
-			
-			ring = new IntegerModRing(2);
+			var ring = new IntegerRingModulo2();
 
 			match(ring.val(0), 0);
 			match(ring.val(1), 1);

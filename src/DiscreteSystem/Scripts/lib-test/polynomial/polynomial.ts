@@ -10,7 +10,7 @@ module Test {
 	import TParser = Polynomials.TermParser;
 	import TPrinter = Polynomials.TermPrinter;
 	import PPrinter = Polynomials.PolynomialPrinter;
-	import IntegerModRing = Polynomials.IntegerModRing;
+	import IntegerRingModulo2 = Polynomials.IntegerRingModulo2;
 
 	group('parser', () => {
 
@@ -187,7 +187,7 @@ module Test {
 		});
 
 		// Z2-Ring
-		System.ring = new IntegerModRing(2);
+		System.ring = new IntegerRingModulo2();
 
 		test('term toStr in Z2', () => {
 

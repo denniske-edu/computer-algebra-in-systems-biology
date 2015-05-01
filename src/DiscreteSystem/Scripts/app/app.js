@@ -9,7 +9,7 @@ var App;
     var PolynomialParser = Polynomials.PolynomialParser;
     var Variables = Maths.Variables;
     var Replacer = Maths.Replacer;
-    var IntegerModRing = Polynomials.IntegerModRing;
+    var IntegerRingModulo2 = Polynomials.IntegerRingModulo2;
     var System = DiscreteSystem.System;
     var GroebnerAlgorithm = DiscreteSystem.GroebnerAlgorithm;
     var Plex = Polynomials.Plex;
@@ -59,7 +59,7 @@ var App;
         function App() {
             var _this = this;
             // Z2-Ring
-            System.ring = new IntegerModRing(2);
+            System.ring = new IntegerRingModulo2();
             this.computed = ko.observable(false);
             this.inputs = ko.observableArray();
             this.inputs.push(new InputItem(this));

@@ -49,26 +49,19 @@ var Polynomials;
         return IntegerRing;
     })(Ring);
     Polynomials.IntegerRing = IntegerRing;
-    var IntegerModRing = (function (_super) {
-        __extends(IntegerModRing, _super);
-        function IntegerModRing(n) {
+    var IntegerRingModulo2 = (function (_super) {
+        __extends(IntegerRingModulo2, _super);
+        function IntegerRingModulo2() {
             _super.call(this);
-            this.n = n;
         }
-        IntegerModRing.prototype.val = function (a) {
-            return Math.abs(a % this.n);
+        IntegerRingModulo2.prototype.val = function (a) {
+            return Math.abs(a % 2);
         };
-        IntegerModRing.prototype.power = function (a) {
-            // Only implemented for n = 2
-            // Otherwise need to check here: http://de.wikipedia.org/wiki/Eulersche_Phi-Funktion
-            if (this.n !== 2)
-                throw new Error('Not implemented for n != 2.');
-            if (a === 0)
-                return 0;
-            return 1;
+        IntegerRingModulo2.prototype.power = function (a) {
+            return a === 0 ? 0 : 1;
         };
-        return IntegerModRing;
+        return IntegerRingModulo2;
     })(Ring);
-    Polynomials.IntegerModRing = IntegerModRing;
+    Polynomials.IntegerRingModulo2 = IntegerRingModulo2;
 })(Polynomials || (Polynomials = {}));
 //# sourceMappingURL=rings.js.map
