@@ -27,8 +27,8 @@ module Test {
 		function matchPolynomial(a: Polynomial, b: Polynomial) {
 			a.order(new Plex());
 			b.order(new Plex());
-			var aStr = PPrinter.run(a, field);
-			var bStr = PPrinter.run(b, field);
+			var aStr = PPrinter.run(a);
+			var bStr = PPrinter.run(b);
 			match(a.equals(b), true);
 		}
 		
@@ -36,9 +36,9 @@ module Test {
 
 			var matchLeastCommonMultiple = (aStr: string, bStr: string, lcmStr: string) => {
 
-				var a = TParser.parse(aStr, field);
-				var b = TParser.parse(bStr, field);
-				var lcm = TParser.parse(lcmStr, field);
+				var a = TParser.parse(aStr);
+				var b = TParser.parse(bStr);
+				var lcm = TParser.parse(lcmStr);
 
 				var result = GroebnerAlgorithm.leastCommonMultiple(a, b);
 
@@ -53,9 +53,9 @@ module Test {
 
 			var matchSPolynomial = (aStr: string, bStr: string, sPolynomialStr: string) => {
 
-				var a = PParser.parse(aStr, field);
-				var b = PParser.parse(bStr, field);
-				var sPolynomial = PParser.parse(sPolynomialStr, field);
+				var a = PParser.parse(aStr);
+				var b = PParser.parse(bStr);
+				var sPolynomial = PParser.parse(sPolynomialStr);
 
 				var result = GroebnerAlgorithm.sPolynomial(a, b, new Plex());
 
@@ -69,12 +69,12 @@ module Test {
 
 			var matchGroebner = (FStr: string[], reducedGroebnerStr: string[]) => {
 
-				var F = _.map(FStr, e => PParser.parse(e, field));
+				var F = _.map(FStr, e => PParser.parse(e));
 
 				var result = GroebnerAlgorithm.run(F, new Plex());
 
 				for (var i = 0; i < reducedGroebnerStr.length; i++) {
-					matchPolynomial(result[i], PParser.parse(reducedGroebnerStr[i], field));
+					matchPolynomial(result[i], PParser.parse(reducedGroebnerStr[i]));
 				}
 			};
 
@@ -93,12 +93,12 @@ module Test {
 
 			var matchGroebner = (FStr: string[], reducedGroebnerStr: string[]) => {
 
-				var F = _.map(FStr, e => PParser.parse(e, field));
+				var F = _.map(FStr, e => PParser.parse(e));
 
 				var result = GroebnerAlgorithm.run(F, new Plex());
 
 				for (var i = 0; i < reducedGroebnerStr.length; i++) {
-					matchPolynomial(result[i], PParser.parse(reducedGroebnerStr[i], field));
+					matchPolynomial(result[i], PParser.parse(reducedGroebnerStr[i]));
 				}
 			};
 

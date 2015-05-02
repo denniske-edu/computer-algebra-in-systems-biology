@@ -242,7 +242,7 @@ module App {
 			
 			// Polynomial
 
-			var field = this.allVariables();
+			System.field = this.allVariables();
 
 			this.polynomialExpressions.removeAll();
 
@@ -251,7 +251,7 @@ module App {
 
 				expr = expression.expression() + ' - ' + expression.variable();
 
-				expr = PolynomialPrinter.run(PolynomialParser.parse(expr, field), field);
+				expr = PolynomialPrinter.run(PolynomialParser.parse(expr));
 
 				this.polynomialExpressions.push(new InputItem(this, '0', expr));
 			}
@@ -269,7 +269,7 @@ module App {
 
 			// Replace free variables
 
-			var field = this.boundVariables();
+			System.field = this.boundVariables();
 
 			var F = [];
 
@@ -290,11 +290,11 @@ module App {
 
 				expr = expr + ' - ' + vari;
 
-				expr = PolynomialPrinter.run(PolynomialParser.parse(expr, field), field);
+				expr = PolynomialPrinter.run(PolynomialParser.parse(expr));
 
 				this.replacedExpressions.push(new InputItem(this, '0', expr));
 
-				F.push(PolynomialParser.parse(expr, field));
+				F.push(PolynomialParser.parse(expr));
 			}
 
 			// Groebner basis
@@ -306,7 +306,7 @@ module App {
 			for (i = 0; i < groebner.length; i++) {
 				expression = groebner[i];
 
-				expr = PolynomialPrinter.run(expression, field);
+				expr = PolynomialPrinter.run(expression);
 
 				this.groebnerExpressions.push(new InputItem(this, '0', expr));
 			}

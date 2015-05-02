@@ -6,13 +6,13 @@ var Polynomials;
     var PolynomialParser = (function () {
         function PolynomialParser() {
         }
-        PolynomialParser.parse = function (str, field) {
+        PolynomialParser.parse = function (str) {
             str = str.replace(/\s/g, '');
             var terms = str.replace(/-/g, '+-').split('+');
             var polynomial = new Polynomials.Polynomial();
             for (var i = 0; i < terms.length; i++) {
                 if (terms[i].length > 0) {
-                    polynomial.addTerm(Polynomials.TermParser.parse(terms[i], field));
+                    polynomial.addTerm(Polynomials.TermParser.parse(terms[i]));
                 }
             }
             return polynomial;

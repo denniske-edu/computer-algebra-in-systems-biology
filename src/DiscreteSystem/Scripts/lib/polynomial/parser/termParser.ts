@@ -1,12 +1,11 @@
 
 module Polynomials {
-    
-    /**
+	import System = DiscreteSystem.System; /**
      * Parses a term expression from string into structure
      */
 	export class TermParser {
 		
-		static parse(str: string, field: string[]): Term {
+		static parse(str: string): Term {
 
 			str = str.replace(/\s/g, '');
 
@@ -19,7 +18,7 @@ module Polynomials {
 
 			var factors = str.split('*');
 
-			var monomial = new Array(field.length);
+			var monomial = new Array(System.field.length);
 
 			for (var k = 0; k < monomial.length; k++) {
 				monomial[k] = 0;
@@ -35,7 +34,7 @@ module Polynomials {
 					var parts = factor.split('^');
 					var base = parts[0];
 					var exponent = parts.length === 1 ? 1 : parseInt(parts[1]);
-					monomial[field.indexOf(base)] += exponent;
+					monomial[System.field.indexOf(base)] += exponent;
 				}
 			}
 

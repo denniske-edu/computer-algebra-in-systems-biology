@@ -1,12 +1,12 @@
 var Polynomials;
 (function (Polynomials) {
-    /**
+    var System = DiscreteSystem.System; /**
      * Parses a term expression from string into structure
      */
     var TermParser = (function () {
         function TermParser() {
         }
-        TermParser.parse = function (str, field) {
+        TermParser.parse = function (str) {
             str = str.replace(/\s/g, '');
             var coefficient = 1;
             if (str.length > 0 && str[0] === '-') {
@@ -14,7 +14,7 @@ var Polynomials;
                 str = str.substr(1);
             }
             var factors = str.split('*');
-            var monomial = new Array(field.length);
+            var monomial = new Array(System.field.length);
             for (var k = 0; k < monomial.length; k++) {
                 monomial[k] = 0;
             }
@@ -29,7 +29,7 @@ var Polynomials;
                     var parts = factor.split('^');
                     var base = parts[0];
                     var exponent = parts.length === 1 ? 1 : parseInt(parts[1]);
-                    monomial[field.indexOf(base)] += exponent;
+                    monomial[System.field.indexOf(base)] += exponent;
                 }
             }
             return new Polynomials.Term(coefficient, monomial);
