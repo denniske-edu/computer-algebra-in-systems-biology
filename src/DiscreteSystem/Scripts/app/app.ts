@@ -242,7 +242,7 @@ module App {
 			
 			// Polynomial
 
-			System.field = this.allVariables();
+			System.variables = this.allVariables();
 
 			this.polynomialExpressions.removeAll();
 
@@ -269,7 +269,7 @@ module App {
 
 			// Replace free variables
 
-			System.field = this.boundVariables();
+			System.variables = this.boundVariables();
 
 			var F = [];
 

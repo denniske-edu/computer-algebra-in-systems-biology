@@ -9,7 +9,7 @@ var Test;
     Test.group('division', function () {
         // Integer-Ring
         System.ring = new IntegerRing();
-        System.field = ['x', 'y', 'z', 'x_1', 'x_2', 'x_3', 'x_4', 'x_5', 'x_6', 'x_7', 'x_8', 'x_9'];
+        System.variables = ['x', 'y', 'z', 'x_1', 'x_2', 'x_3', 'x_4', 'x_5', 'x_6', 'x_7', 'x_8', 'x_9'];
         function matchPolynomial(a, b) {
             a.order(new Plex());
             b.order(new Plex());

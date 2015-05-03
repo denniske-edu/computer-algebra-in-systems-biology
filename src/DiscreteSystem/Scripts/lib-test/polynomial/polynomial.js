@@ -13,7 +13,7 @@ var Test;
     Test.group('parser', function () {
         // Integer-Ring
         System.ring = new IntegerRing();
-        System.field = ['x', 'y', 'z', 'x_1', 'x_2', 'x_3', 'x_4', 'x_5', 'x_6', 'x_7', 'x_8', 'x_9'];
+        System.variables = ['x', 'y', 'z', 'x_1', 'x_2', 'x_3', 'x_4', 'x_5', 'x_6', 'x_7', 'x_8', 'x_9'];
         function matchTerm(a, b) {
             Test.match(a.equals(b), true);
         }
@@ -25,9 +25,9 @@ var Test;
             Test.match(a.equals(b), true);
         }
         Test.test('term parse', function () {
-            System.field = ['x_1', 'x_2'];
+            System.variables = ['x_1', 'x_2'];
             matchTerm(TParser.parse('x_1'), new Term(1, [1, 0]));
-            System.field = ['x', 'y'];
+            System.variables = ['x', 'y'];
             matchTerm(TParser.parse('1'), new Term(1, [0, 0]));
             matchTerm(TParser.parse('x*y'), new Term(1, [1, 1]));
             matchTerm(TParser.parse('x^2*y'), new Term(1, [2, 1]));
@@ -49,7 +49,7 @@ var Test;
             matchToStr('-3*x^2*y');
         });
         Test.test('term divisible', function () {
-            System.field = ['x', 'y'];
+            System.variables = ['x', 'y'];
             Test.assertIsTrue(TParser.parse('x^2*y').divisibleBy(TParser.parse('x*y')));
             Test.assertIsTrue(TParser.parse('x^2*y^2').divisibleBy(TParser.parse('x^2*y^2')));
             Test.assertIsFalse(TParser.parse('x*y').divisibleBy(TParser.parse('x^2*y')));
@@ -60,12 +60,12 @@ var Test;
             matchTerm(new Term(4, [2, 2]), new Term(4, [2, 2]));
         });
         Test.test('term divide', function () {
-            System.field = ['x', 'y'];
+            System.variables = ['x', 'y'];
             matchTerm(TParser.parse('x^2*y').divide(TParser.parse('x*y')), TParser.parse('x'));
             matchTerm(TParser.parse('4*x^2*y^2').divide(TParser.parse('2*x^2*y^2')), TParser.parse('2'));
         });
         Test.test('polynomial parse', function () {
-            System.field = ['x', 'y'];
+            System.variables = ['x', 'y'];
             matchPolynomial(PParser.parse(''), new Polynomial());
             matchPolynomial(PParser.parse('x'), new Polynomial([TParser.parse('x')]));
             matchPolynomial(PParser.parse('x*y'), new Polynomial([TParser.parse('x*y')]));
@@ -102,7 +102,7 @@ var Test;
             matchAdd('2*x^2*y+3*y', 'x^2*y+2*y', '3*x^2*y+5*y');
         });
         Test.test('term subtract', function () {
-            System.field = ['x', 'y'];
+            System.variables = ['x', 'y'];
             matchPolynomial(PParser.parse('1').subtract(PParser.parse('1')), PParser.parse(''));
             matchPolynomial(PParser.parse('x').subtract(PParser.parse('x')), PParser.parse(''));
             matchPolynomial(PParser.parse('x+1').subtract(PParser.parse('x+1')), PParser.parse(''));
@@ -113,7 +113,7 @@ var Test;
             matchPolynomial(PParser.parse('x+1').subtract(PParser.parse('x^2+1')), PParser.parse('-x^2+x'));
         });
         Test.test('term multiply', function () {
-            System.field = ['x', 'y'];
+            System.variables = ['x', 'y'];
             matchPolynomial(PParser.parse('1').multiply(PParser.parse('5')), PParser.parse('5'));
             matchPolynomial(PParser.parse('x').multiply(PParser.parse('y')), PParser.parse('x*y'));
             matchPolynomial(PParser.parse('x+1').multiply(PParser.parse('x+1')), PParser.parse('x^2+2*x+1'));

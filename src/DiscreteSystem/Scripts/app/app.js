@@ -161,7 +161,7 @@ var App;
             this.freeVariables(freeVariables);
             this.freeVariablesDict(freeVariablesDict);
             // Polynomial
-            System.field = this.allVariables();
+            System.variables = this.allVariables();
             this.polynomialExpressions.removeAll();
             for (i = 0; i < this.simplifiedExpressions().length; i++) {
                 expression = this.simplifiedExpressions()[i];
@@ -177,7 +177,7 @@ var App;
             var expr;
             var expression;
             // Replace free variables
-            System.field = this.boundVariables();
+            System.variables = this.boundVariables();
             var F = [];
             var replacements = _.map(this.freeVariablesDict(), function (item) { return [item.key, item.value]; });
             this.replacedExpressions.removeAll();

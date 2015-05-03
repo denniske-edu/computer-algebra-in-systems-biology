@@ -14,7 +14,7 @@ var Polynomials;
                 str = str.substr(1);
             }
             var factors = str.split('*');
-            var monomial = new Array(System.field.length);
+            var monomial = new Array(System.variables.length);
             for (var k = 0; k < monomial.length; k++) {
                 monomial[k] = 0;
             }
@@ -29,7 +29,7 @@ var Polynomials;
                     var parts = factor.split('^');
                     var base = parts[0];
                     var exponent = parts.length === 1 ? 1 : parseInt(parts[1]);
-                    monomial[System.field.indexOf(base)] += exponent;
+                    monomial[System.variables.indexOf(base)] += exponent;
                 }
             }
             return new Polynomials.Term(coefficient, monomial);

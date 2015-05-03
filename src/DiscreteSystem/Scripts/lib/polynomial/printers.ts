@@ -56,9 +56,9 @@ module Polynomials {
 
 			var factors = [];
 
-			for (var i = 0; i < System.field.length; i++) {
+			for (var i = 0; i < System.variables.length; i++) {
 
-				var f = System.field[i];
+				var f = System.variables[i];
 				var exponential = term.monomial[i];
 
 				if (exponential === 1) {

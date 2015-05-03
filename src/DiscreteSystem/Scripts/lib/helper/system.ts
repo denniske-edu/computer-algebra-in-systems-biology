@@ -6,6 +6,6 @@ module DiscreteSystem {
 	export class System {
 
 		static ring: Ring = new IntegerRing();
-		static field: string[];
+		static variables: string[];
 	}
 }
