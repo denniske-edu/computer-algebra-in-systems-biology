@@ -23,13 +23,6 @@ module Maths {
 
 			var blocks = [];
 
-			if (block instanceof Expression) {
-				
-				var expression = <Expression>block;
-
-				return Flatter.run(expression.child);
-			}
-
 			if (block instanceof Add) {
 
 				var add = <Add>block;

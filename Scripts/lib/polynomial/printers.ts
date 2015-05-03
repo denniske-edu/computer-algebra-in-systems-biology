@@ -1,7 +1,6 @@
 
 module Polynomials {
-    
-    /**
+	import System = DiscreteSystem.System; /**
      * Prints a Polynomial as string.
 	 *
 	 * Example output:
@@ -11,7 +10,10 @@ module Polynomials {
      */
 	export class PolynomialPrinter {
 
-		static run(polynomial: Polynomial, field: string[]): string {
+		static run(polynomial: Polynomial): string {
+
+			if (polynomial.terms.length === 0)
+				return '0';
 
 			var str = '';
 
@@ -19,7 +21,7 @@ module Polynomials {
 				var term = polynomial.terms[i];
 				if (i > 0 && term.coefficient > 0)
 					str += '+';
-				str += TermPrinter.run(term, field);
+				str += TermPrinter.run(term);
 			}
 
 			return str;
@@ -36,7 +38,7 @@ module Polynomials {
      */
 	export class TermPrinter {
 
-		static run(term: Term, field: string[]): string {
+		static run(term: Term): string {
 
 			if (_.all(term.monomial, e => e === 0)) {
 				return term.coefficient;
@@ -54,9 +56,9 @@ module Polynomials {
 
 			var factors = [];
 
-			for (var i = 0; i < field.length; i++) {
+			for (var i = 0; i < System.variables.length; i++) {
 
-				var f = field[i];
+				var f = System.variables[i];
 				var exponential = term.monomial[i];
 
 				if (exponential === 1) {

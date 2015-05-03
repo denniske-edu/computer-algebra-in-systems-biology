@@ -11,7 +11,7 @@ module App {
 	import PolynomialParser = Polynomials.PolynomialParser;
 	import Variables = Maths.Variables;
 	import Replacer = Maths.Replacer;
-	import IntegerModRing = Polynomials.IntegerModRing;
+	import IntegerRingModulo2 = Polynomials.IntegerRingModulo2;
 	import System = DiscreteSystem.System;
 	import GroebnerAlgorithm = DiscreteSystem.GroebnerAlgorithm;
 	import Plex = Polynomials.Plex;
@@ -91,7 +91,7 @@ module App {
 		constructor() {
 
 			// Z2-Ring
-			System.ring = new IntegerModRing(2);
+			System.ring = new IntegerRingModulo2();
 
 			this.computed = ko.observable(false);
 
@@ -242,7 +242,7 @@ module App {
 			
 			// Polynomial
 
-			var field = this.allVariables();
+			System.variables = this.allVariables();
 
 			this.polynomialExpressions.removeAll();
 
@@ -251,7 +251,7 @@ module App {
 
 				expr = expression.expression() + ' - ' + expression.variable();
 
-				expr = PolynomialPrinter.run(PolynomialParser.parse(expr, field), field);
+				expr = PolynomialPrinter.run(PolynomialParser.parse(expr));
 
 				this.polynomialExpressions.push(new InputItem(this, '0', expr));
 			}
@@ -269,7 +269,7 @@ module App {
 
 			// Replace free variables
 
-			var field = this.boundVariables();
+			System.variables = this.boundVariables();
 
 			var F = [];
 
@@ -290,11 +290,11 @@ module App {
 
 				expr = expr + ' - ' + vari;
 
-				expr = PolynomialPrinter.run(PolynomialParser.parse(expr, field), field);
+				expr = PolynomialPrinter.run(PolynomialParser.parse(expr));
 
 				this.replacedExpressions.push(new InputItem(this, '0', expr));
 
-				F.push(PolynomialParser.parse(expr, field));
+				F.push(PolynomialParser.parse(expr));
 			}
 
 			// Groebner basis
@@ -306,7 +306,7 @@ module App {
 			for (i = 0; i < groebner.length; i++) {
 				expression = groebner[i];
 
-				expr = PolynomialPrinter.run(expression, field);
+				expr = PolynomialPrinter.run(expression);
 
 				this.groebnerExpressions.push(new InputItem(this, '0', expr));
 			}

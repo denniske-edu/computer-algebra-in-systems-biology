@@ -21,10 +21,6 @@ var Maths;
         }
         Flatter.run = function (block) {
             var blocks = [];
-            if (block instanceof Maths.Expression) {
-                var expression = block;
-                return Flatter.run(expression.child);
-            }
             if (block instanceof Maths.Add) {
                 var add = block;
                 if (add.left instanceof Maths.Add) {

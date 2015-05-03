@@ -17,15 +17,6 @@ module Maths {
 
 		static run(block: any, replacements: any[][] = []): any {
 			
-			if (block instanceof Expression) {
-				
-				var expression = <Expression>block;
-
-				expression.child = Replacer.run(expression.child, replacements);
-				
-				return expression;
-			}
-
 			if (block instanceof Add) {
 
 				var add = <Add>block;

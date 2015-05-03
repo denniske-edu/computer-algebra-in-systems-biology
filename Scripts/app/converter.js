@@ -1,13 +1,12 @@
 var App;
 (function (App) {
     var Add = Maths.Add;
-    var Expression = Bool.Expression;
     var And = Bool.And;
     var Or = Bool.Or;
     var Not = Bool.Not;
     var Mult = Maths.Mult;
     /**
-     * NOTE: Works only in the ring IntegerModRing(2).
+     * NOTE: Works only in the ring IntegerRingModulo2.
      *
      * Converts a bool expression into a math expression by using the
      * following conversion rules:
@@ -28,10 +27,6 @@ var App;
         function Converter() {
         }
         Converter.run = function (block) {
-            if (block instanceof Expression) {
-                var expression = block;
-                return Converter.run(expression.child);
-            }
             if (block instanceof And) {
                 var and = block;
                 and.left = Converter.run(and.left);

@@ -15,11 +15,6 @@ var Maths;
         }
         Variables.run = function (block, vars) {
             if (vars === void 0) { vars = []; }
-            if (block instanceof Maths.Expression) {
-                var expression = block;
-                Variables.run(expression.child, vars);
-                return vars;
-            }
             if (block instanceof Maths.Add) {
                 var add = block;
                 Variables.run(add.left, vars);

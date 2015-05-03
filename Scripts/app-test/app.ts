@@ -27,7 +27,6 @@ module Test {
 			matchParse('!a&b&c', '(a+1)*b*c');
 
 			matchParse('!a&(b|c)', '(a+1)*(b+c+b*c)');
-
 		});
 
 	});

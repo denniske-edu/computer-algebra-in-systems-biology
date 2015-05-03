@@ -1,11 +1,9 @@
 var Test;
 (function (Test) {
-    var IntegerModRing = Polynomials.IntegerModRing;
+    var IntegerRingModulo2 = Polynomials.IntegerRingModulo2;
     Test.group('rings', function () {
-        Test.test('IntegerModRing', function () {
-            var ring = new IntegerModRing(24);
-            Test.match(ring.add(12, 21), 9);
-            ring = new IntegerModRing(2);
+        Test.test('IntegerRingModulo2', function () {
+            var ring = new IntegerRingModulo2();
             Test.match(ring.val(0), 0);
             Test.match(ring.val(1), 1);
             Test.match(ring.val(2), 0);

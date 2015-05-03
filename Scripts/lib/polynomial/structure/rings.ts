@@ -40,29 +40,19 @@ module Polynomials {
 		}
 	}
 
-	export class IntegerModRing extends Ring {
-		private n;
+	export class IntegerRingModulo2 extends Ring {
 
-		constructor(n: number) {
+		constructor() {
 			super();
-			this.n = n;
 		}
 
 		val(a: number): number {
-			return Math.abs(a % this.n);
+			return Math.abs(a % 2);
 		}
 
 		power(a: number): number {
 
-			// Only implemented for n = 2
-			// Otherwise need to check here: http://de.wikipedia.org/wiki/Eulersche_Phi-Funktion
-			if (this.n !== 2)
-				throw new Error('Not implemented for n != 2.');
-
-			if (a === 0)
-				return 0;
-
-			return 1;
+			return a === 0 ? 0 : 1;
 		}
 	}
 }

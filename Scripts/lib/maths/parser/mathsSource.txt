@@ -1,43 +1,36 @@
-﻿/*
- * Grammar, which recognizes simple arithmetic expressions with + and * like "2*(3+4)".
- */
+﻿// Recognizes arithmetic expressions like "2*(3+4)".
 
 {
 
 var Add = (function () {
-  function Add(left, right) { this._ = "Add"; this.left = left; this.right = right; }
+  function Add(l, r) { this._ = "Add"; this.l = l; this.r = r; }
   return Add;
 })();
 
 
 var Mult = (function () {
-  function Mult(left, right) { this._ = "Mult"; this.left = left; this.right = right; }
+  function Mult(l, r) { this._ = "Mult"; this.l = l; this.r = r; }
   return Mult;
-})();
-
-var Expression = (function () {
-  function Expression(child) { this._ = "Expression"; this.child = child; }
-  return Expression;
 })();
 
 }
 
 
 start
-  = expression:additive { return new Expression(expression) }
+  = add
 
-additive
-  = left:multiplicative "+" right:additive { return new Add(left, right) }
-  / multiplicative
+add
+  = left:mult "+" right:add { return new Add(left, right) }
+  / mult
 
-multiplicative
-  = left:primary "*" right:multiplicative { return new Mult(left, right) }
+mult
+  = left:primary "*" right:mult { return new Mult(left, right) }
   / primary
 
 primary
-  = integer
-  / "(" additive:additive ")" { return additive; }
+  = val
+  / "(" some:add ")" { return some; }
 
-integer "integer"
+val
   = digits:[0-9]+ { return parseInt(digits.join(""), 10); }
-  / letters:[a-zA-Z_]+ { return letters.join(''); }
+  / letters:[a-zA-Z_0-9]+ { return letters.join(''); }

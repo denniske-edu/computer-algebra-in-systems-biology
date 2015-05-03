@@ -9,7 +9,7 @@ var App;
     var PolynomialParser = Polynomials.PolynomialParser;
     var Variables = Maths.Variables;
     var Replacer = Maths.Replacer;
-    var IntegerModRing = Polynomials.IntegerModRing;
+    var IntegerRingModulo2 = Polynomials.IntegerRingModulo2;
     var System = DiscreteSystem.System;
     var GroebnerAlgorithm = DiscreteSystem.GroebnerAlgorithm;
     var Plex = Polynomials.Plex;
@@ -59,7 +59,7 @@ var App;
         function App() {
             var _this = this;
             // Z2-Ring
-            System.ring = new IntegerModRing(2);
+            System.ring = new IntegerRingModulo2();
             this.computed = ko.observable(false);
             this.inputs = ko.observableArray();
             this.inputs.push(new InputItem(this));
@@ -161,12 +161,12 @@ var App;
             this.freeVariables(freeVariables);
             this.freeVariablesDict(freeVariablesDict);
             // Polynomial
-            var field = this.allVariables();
+            System.variables = this.allVariables();
             this.polynomialExpressions.removeAll();
             for (i = 0; i < this.simplifiedExpressions().length; i++) {
                 expression = this.simplifiedExpressions()[i];
                 expr = expression.expression() + ' - ' + expression.variable();
-                expr = PolynomialPrinter.run(PolynomialParser.parse(expr, field), field);
+                expr = PolynomialPrinter.run(PolynomialParser.parse(expr));
                 this.polynomialExpressions.push(new InputItem(this, '0', expr));
             }
             this.computeGroebner();
@@ -177,7 +177,7 @@ var App;
             var expr;
             var expression;
             // Replace free variables
-            var field = this.boundVariables();
+            System.variables = this.boundVariables();
             var F = [];
             var replacements = _.map(this.freeVariablesDict(), function (item) { return [item.key, item.value]; });
             this.replacedExpressions.removeAll();
@@ -186,16 +186,16 @@ var App;
                 vari = expression.variable();
                 expr = MathsPrinter.run(Simplifier.run(Decomposer.run(Replacer.run(MathsParser.parse(expression.expression()), replacements))));
                 expr = expr + ' - ' + vari;
-                expr = PolynomialPrinter.run(PolynomialParser.parse(expr, field), field);
+                expr = PolynomialPrinter.run(PolynomialParser.parse(expr));
                 this.replacedExpressions.push(new InputItem(this, '0', expr));
-                F.push(PolynomialParser.parse(expr, field));
+                F.push(PolynomialParser.parse(expr));
             }
             // Groebner basis
             var groebner = GroebnerAlgorithm.run(F, new Plex());
             this.groebnerExpressions.removeAll();
             for (i = 0; i < groebner.length; i++) {
                 expression = groebner[i];
-                expr = PolynomialPrinter.run(expression, field);
+                expr = PolynomialPrinter.run(expression);
                 this.groebnerExpressions.push(new InputItem(this, '0', expr));
             }
         };

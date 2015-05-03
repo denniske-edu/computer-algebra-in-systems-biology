@@ -6,7 +6,7 @@ module Polynomials {
      */
 	export class PolynomialParser {
 
-		static parse(str: string, field: string[]): Polynomial {
+		static parse(str: string): Polynomial {
 
 			str = str.replace(/\s/g, '');
 
@@ -16,7 +16,7 @@ module Polynomials {
 
 			for (var i = 0; i < terms.length; i++) {
 				if (terms[i].length > 0) {
-					polynomial.addTerm(TermParser.parse(terms[i], field));
+					polynomial.addTerm(TermParser.parse(terms[i]));
 				}
 			}
 

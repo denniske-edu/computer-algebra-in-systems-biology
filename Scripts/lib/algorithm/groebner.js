@@ -27,6 +27,7 @@ var DiscreteSystem;
             return left.subtract(right);
         };
         GroebnerAlgorithm.run = function (F, order) {
+            F = _.filter(F, function (a) { return a.terms.length > 0; });
             F = GroebnerAlgorithm.groebner(F, order);
             F = GroebnerAlgorithm.minimalize(F, order);
             F = GroebnerAlgorithm.reduce(F, order);

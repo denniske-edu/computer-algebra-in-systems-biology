@@ -1,6 +1,6 @@
 var Polynomials;
 (function (Polynomials) {
-    /**
+    var System = DiscreteSystem.System; /**
      * Prints a Polynomial as string.
      *
      * Example output:
@@ -11,13 +11,15 @@ var Polynomials;
     var PolynomialPrinter = (function () {
         function PolynomialPrinter() {
         }
-        PolynomialPrinter.run = function (polynomial, field) {
+        PolynomialPrinter.run = function (polynomial) {
+            if (polynomial.terms.length === 0)
+                return '0';
             var str = '';
             for (var i = 0; i < polynomial.terms.length; i++) {
                 var term = polynomial.terms[i];
                 if (i > 0 && term.coefficient > 0)
                     str += '+';
-                str += TermPrinter.run(term, field);
+                str += TermPrinter.run(term);
             }
             return str;
         };
@@ -35,7 +37,7 @@ var Polynomials;
     var TermPrinter = (function () {
         function TermPrinter() {
         }
-        TermPrinter.run = function (term, field) {
+        TermPrinter.run = function (term) {
             if (_.all(term.monomial, function (e) { return e === 0; })) {
                 return term.coefficient;
             }
@@ -50,8 +52,8 @@ var Polynomials;
                 sign = '-';
             }
             var factors = [];
-            for (var i = 0; i < field.length; i++) {
-                var f = field[i];
+            for (var i = 0; i < System.variables.length; i++) {
+                var f = System.variables[i];
                 var exponential = term.monomial[i];
                 if (exponential === 1) {
                     factors.push(f);
