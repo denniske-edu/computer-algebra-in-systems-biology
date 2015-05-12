@@ -111,10 +111,7 @@ module App {
 			this.allVariables = ko.computed(() => {
 				return this.boundVariables().concat(this.freeVariables());
 			});
-
-			//this.sampleI();
-			this.sampleII();
-
+			
 			this.inputsLatex = ko.computed(() => {
 				return this.getEquationLatex(this.inputs());
 			});
