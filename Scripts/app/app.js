@@ -215,13 +215,13 @@ var App;
         };
         App.prototype.sampleI = function () {
             this.inputs.removeAll();
-            this.inputs.push(new InputItem(this, 'A', '0'));
-            this.inputs.push(new InputItem(this, 'B', '0'));
+            this.inputs.push(new InputItem(this, 'A', 'A & B'));
+            this.inputs.push(new InputItem(this, 'B', '!A'));
         };
         App.prototype.sampleII = function () {
             this.inputs.removeAll();
-            this.inputs.push(new InputItem(this, 'A', '0'));
-            this.inputs.push(new InputItem(this, 'B', '0'));
+            this.inputs.push(new InputItem(this, 'A', '!A'));
+            this.inputs.push(new InputItem(this, 'B', 'B'));
         };
         App.prototype.sampleIII = function () {
             this.inputs.removeAll();
