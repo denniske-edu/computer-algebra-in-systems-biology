@@ -74,8 +74,6 @@ var App;
             this.allVariables = ko.computed(function () {
                 return _this.boundVariables().concat(_this.freeVariables());
             });
-            //this.sampleI();
-            this.sampleII();
             this.inputsLatex = ko.computed(function () {
                 return _this.getEquationLatex(_this.inputs());
             });
